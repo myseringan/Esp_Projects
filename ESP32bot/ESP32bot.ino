@@ -5,9 +5,9 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 
-const char* server_ip = "5.8.51.154";
+const char* server_ip = "ip твоего сервера";
 const int server_port = 443;
-const char* api_password = "OnksDXA_ixPo7fsFcrDsF97n";
+const char* api_password = "";
 const int trigPin = 5;
 const int echoPin = 18;
 const int MIN_DISTANCE_CM = 5;
@@ -213,3 +213,4 @@ void loop() {
     }
   }
 }
+
