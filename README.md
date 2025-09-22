@@ -23,6 +23,38 @@ ESP8266 va ESP32 loyihalarim to‘plami.
 
 ---
 
+## 📚 Библиотеки / Libraries / Kutubxonalar
+
+Для корректной работы проектов необходимо установить следующие библиотеки в Arduino IDE:  
+To run these projects, you need to install the following libraries in Arduino IDE:  
+Loyihalarni ishlatish uchun Arduino IDE’da quyidagi kutubxonalarni o‘rnatish kerak:
+
+- **ESP8266WiFi.h** – работа с Wi-Fi на ESP8266  
+  ESP8266 Wi-Fi support / ESP8266 uchun Wi-Fi qo‘llab-quvvatlash  
+
+- **WiFi.h** – работа с Wi-Fi на ESP32  
+  ESP32 Wi-Fi support / ESP32 uchun Wi-Fi qo‘llab-quvvatlash  
+
+- **BlynkSimpleEsp8266.h** / **BlynkSimpleEsp32.h** – интеграция с Blynk  
+  Blynk integration / Blynk integratsiyasi  
+
+- **ArduinoJson.h** – обработка JSON данных  
+  JSON parsing / JSON bilan ishlash  
+
+- **UniversalTelegramBot.h** – Telegram Bot API для ESP  
+  Telegram Bot API for ESP / ESP uchun Telegram Bot API  
+
+- **DNSServer.h** – локальный DNS (для captive portal)  
+  Local DNS / Lokal DNS  
+
+- **ESP8266WebServer.h** / **WebServer.h** – встроенный веб-сервер  
+  Embedded web server / O‘rnatilgan web-server  
+
+- **SoftwareSerial.h** – программный Serial (для датчиков и модулей)  
+  Software serial port / Dasturiy serial port  
+
+---
+
 ## ⚡ Технологии / Technologies / Texnologiyalar
 
 - ESP8266 / ESP32  
