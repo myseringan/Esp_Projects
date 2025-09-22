@@ -7,7 +7,7 @@
 #include <DNSServer.h>
 #include <BlynkSimpleEsp8266.h>
 
-char auth[] = "b-4atMkevFd_1iP5NTRkZr1t_zIO4iS0";
+char auth[] = "твой токен для blink";
 
 const byte DNS_PORT = 53;
 DNSServer dnsServer;
@@ -362,3 +362,4 @@ void loop() {
     }
   }
 }
+
