@@ -74,6 +74,63 @@ int dataldr;
 int ldr;
 int ldrpin = A1;
 
+// ========= Кадрированная отправка на ESP: <T23.4>\n и т.п. =========
+void sendFrame(char type, float v) {
+  arduinoSerial.write('<');
+  arduinoSerial.write(type);
+  // аккуратно печатаем число
+  if (type == 'S' || type == 'I') arduinoSerial.print((int)v);   // проценты/целое
+  else                            arduinoSerial.print(v, 1);     // 1 знак после запятой
+  arduinoSerial.write('>');
+  arduinoSerial.write('\n');
+}
+
+// ========= Приём команд с ESP: <R0>\n / <R1>\n / <L0>\n / <L1>\n =========
+void pollESP() {
+  static char frame[24];
+  static uint8_t idx = 0;
+  while (arduinoSerial.available()) {
+    char c = (char)arduinoSerial.read();
+    if (c == '\r') continue;
+    if (c == '<') { idx = 0; continue; }
+    if (c == '>' || c == '\n') {
+      frame[idx] = 0;
+      idx = 0;
+      if (frame[0] == 0) continue;
+      char type = frame[0];
+      int val = atoi(&frame[1]);   // 0/1 или число
+
+      switch (type) {
+        case 'R': {                 // команда полива
+          // 1 = принудительно держать насос ВКЛ, 0 = автоматический режим
+          val2 = (val != 0);
+          if (!val2) {
+            // вернулись в авто: если почва уже влажная — насос отпустить
+            if (analogRead(A0) > 512) digitalWrite(rele, LOW);
+          } else {
+            digitalWrite(rele, HIGH);
+          }
+        } break;
+
+        case 'L': {                 // команда света
+          val4 = (val != 0);
+          if (!val4) {
+            // авто: светом рулит LDR
+            // (ниже в loop уже есть логика; просто тут на всякий отключим)
+            digitalWrite(rele1, LOW);
+          } else {
+            digitalWrite(rele1, HIGH);
+          }
+        } break;
+
+        default: break;
+      }
+      continue;
+    }
+    if (idx < sizeof(frame) - 1) frame[idx++] = c;
+    else idx = 0;  // переполнение → сброс
+  }
+}
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
@@ -97,96 +154,89 @@ delay(3000);
 
 void loop() {
   if (val5 == true) {
+    pollESP();
     boshqalar();
   }
   
   else if (val == true) {
+    pollESP();
     encoder();
   }
   else {
  if (millis() - timer > 3000) {
- dhtTemperature = dht.readTemperature();
- char Temp = 'T';
- arduinoSerial.write(Temp);
- arduinoSerial.print(dhtTemperature);
- lcd.clear();
- lcd.setCursor(0, 0);
- lcd.print("Harorat:");
- lcd.setCursor(10, 0);
- lcd.print(dhtTemperature);
- lcd.setCursor(14, 0);
- lcd.print(char(223));
- lcd.setCursor(15, 0);
- lcd.print("C");
- dhtHumidity = dht.readHumidity();
- char Humd = 'H';
-arduinoSerial.write(Humd);
-arduinoSerial.print(dhtHumidity);
- lcd.setCursor(0, 1);
- lcd.print("Havo Namligi:");
- lcd.setCursor(13, 1);
- lcd.print(dhtHumidity);
- lcd.setCursor(15, 1);
- lcd.print("%");
- timer = millis();
- }
+  dhtTemperature = dht.readTemperature();
+  dhtHumidity    = dht.readHumidity();
+
+  // если датчик дал NaN — не шлём мусор
+  if (!isnan(dhtTemperature)) sendFrame('T', dhtTemperature);
+  if (!isnan(dhtHumidity))    sendFrame('H', dhtHumidity);
+
+  lcd.clear();
+  lcd.setCursor(0, 0); lcd.print("Harorat:");
+  lcd.setCursor(10, 0); lcd.print(dhtTemperature);
+  lcd.setCursor(14, 0); lcd.print(char(223));
+  lcd.setCursor(15, 0); lcd.print("C");
+
+  lcd.setCursor(0, 1);  lcd.print("Havo Namligi:");
+  lcd.setCursor(13, 1); lcd.print(dhtHumidity);
+  lcd.setCursor(15, 1); lcd.print("%");
+
+  timer = millis();
+}
  
- int soilMoisture = analogRead(A0); 
- soilMoisture = map(soilMoisture, 0, 1023, 100, 0);
- if (millis() - timer1 > 6000) {
- char dataSoil = 'S';
- arduinoSerial.write(dataSoil);
- arduinoSerial.print(soilMoisture);
- lcd.clear();
- lcd.setCursor(0, 0);
- lcd.print("Yer Namligi:"); 
- lcd.setCursor(12, 0);
- lcd.print(soilMoisture);
- lcd.print("%");
- if (soilMoisture < S) {
- digitalWrite(rele, HIGH);
- lcd.setCursor(0, 1);
- lcd.print("Suv qo'yilmoqda!");
- }
- else {
- if (val2 == false) {
- digitalWrite(rele, LOW);
- lcd.setCursor(0, 1);
- lcd.print("Namlik a'lo");
- }
-  }
- timer = millis();
- timer1 = millis();
-  }
-if (millis () - timer3 > 500) {
-    ldr = analogRead(ldrpin);
- ldr = map(ldr, 1023, 0, 100, 0);
- char dataLDR = 'I';
- arduinoSerial.write(dataLDR);
- arduinoSerial.print(dataldr);
-     if (arduinoSerial.available() > 0) {
-    char data1 = arduinoSerial.read();
-    val3 = arduinoSerial.parseFloat();
-    switch (data1) {
-      case 'R': datarele();
-      case 'L': dataphoto();
+ int soilMoisture = analogRead(A0);
+soilMoisture = map(soilMoisture, 0, 1023, 100, 0);
+
+if (millis() - timer1 > 6000) {
+  sendFrame('S', soilMoisture);
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Yer Namligi:");
+  lcd.setCursor(12, 0);
+  lcd.print(soilMoisture);
+  lcd.print("%");
+
+  if (soilMoisture < S) {
+    digitalWrite(rele, HIGH);
+    lcd.setCursor(0, 1);
+    lcd.print("Suv qo'yilmoqda!");
+  } else {
+    if (val2 == false) {
+      digitalWrite(rele, LOW);
+      lcd.setCursor(0, 1);
+      lcd.print("Namlik a'lo   ");
     }
-     } 
-     if (ldr < 30) {
+  }
+  timer  = millis();
+  timer1 = millis();
+}
+if (millis() - timer3 > 500) {
+  ldr = analogRead(ldrpin);
+  ldr = map(ldr, 1023, 0, 100, 0);
+
+  // отправляем процент освещенности на ESP
+  sendFrame('I', ldr);            // <-- было dataldr, это и был баг
+
+  // принимаем команды от ESP (R/L) — выносим сюда
+  pollESP();
+
+  // автосвет, если не принудительный ручной режим
+  if (ldr < 30) {
     digitalWrite(rele1, HIGH);
     dataldr = 1;
+  } else {
+    if (val4 == false) {          // авто-режим
+      digitalWrite(rele1, LOW);
+      dataldr = 0;
+    }
   }
-  else {
-    if (val4 == false) {
-    digitalWrite(rele1, LOW);
-    dataldr = 0;
-  }
-  }
-  timer3 = millis ();
+  timer3 = millis();
 }
     if (val1 == true) {
     harorat();
   }
+  pollESP();
   handleEncoder ();
 }
 }
