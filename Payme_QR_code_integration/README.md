@@ -10,7 +10,7 @@ ESP32 qurilmasi Payme QR to‘lovlaridan xabarlarni qabul qilish uchun
 Payme QR ESP32 — это устройство на базе ESP32, которое получает данные о платежах, совершённых через Payme QR-коды.  
 После оплаты в Serial Monitor выводится статус платежа и сумма.
 
-## 🇬🇧 Project Description
+## US Project Description
 Payme QR ESP32 is an ESP32-based device that receives notifications about payments made via Payme QR codes.  
 After a payment, the payment status and amount are displayed in the Serial Monitor.
 
