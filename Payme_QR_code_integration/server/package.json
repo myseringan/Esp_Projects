@@ -1,0 +1,16 @@
+{
+  "name": "payme-webhook-mqtt",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Payme webhook -> MQTT bridge for Street Aroma",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mqtt": "^4.3.7",
+    "dotenv": "^16.0.3",
+    "fs-extra": "^11.1.1"
+  }
+}
