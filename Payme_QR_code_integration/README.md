@@ -41,6 +41,7 @@ To‘lov amalga oshirilgach, Serial Monitor’da holat va summa ko‘rsatiladi.
 ESP32	Основной микроконтроллер / Main microcontroller / Asosiy mikrokontroller
 Wi-Fi (встроенный)	Подключение к сети для приёма уведомлений / Wi-Fi connectivity / Tarmoqqa ulanish
 Питание 5V / USB	Электропитание устройства / Power supply / Quvvat manbai
+
 🖥️ Настройка и использование / Setup and Usage / Sozlash va foydalanish
 
 Клонируем репозиторий / Clone repository / Repositni klonlash:
