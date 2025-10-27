@@ -1,4 +1,5 @@
 Payme QR Code Integration / Интеграция QR-кода Payme / Payme QR kodini integratsiya qilish
+
 📄 Описание / Description / Tavsif
 
 Этот проект демонстрирует простую интеграцию Payme QR-кодов с использованием ESP32 и Arduino IDE.
