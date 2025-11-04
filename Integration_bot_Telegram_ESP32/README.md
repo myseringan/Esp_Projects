@@ -1,4 +1,4 @@
-# 🌐 ESP32bot  
+# 🌐 Integration_bot_Telegram_ESP32  
 **Умное IoT-устройство для мониторинга расстояния с веб-интерфейсом Wi-Fi и HTTPS-отправкой данных**  
 **Smart IoT distance monitor with Wi-Fi web interface and HTTPS data upload**  
 **Wi-Fi veb interfeysi va HTTPS ma’lumot yuboruvchi masofani o‘lchovchi IoT qurilma**
@@ -7,7 +7,7 @@
 
 ## 🇷🇺 Описание проекта
 
-**ESP32bot** — это автономное устройство на базе **ESP32**, которое измеряет расстояние при помощи ультразвукового датчика и отправляет данные на удалённый сервер по защищённому HTTPS-каналу.  
+**Integration_bot_Telegram_ESP32** — это автономное устройство на базе **ESP32**, которое измеряет расстояние при помощи ультразвукового датчика и отправляет данные на удалённый сервер по защищённому HTTPS-каналу.  
 Для удобства предусмотрен **встроенный веб-интерфейс**, через который можно задать или изменить Wi-Fi-настройки, не перепрошивая микроконтроллер.
 
 ### ⚙️ Основные функции
@@ -38,7 +38,7 @@
 
 ## 🇬🇧 Project Description
 
-**ESP32bot** is an autonomous **ESP32-based IoT device** that measures distance using an ultrasonic sensor and uploads data securely via HTTPS to a remote server.  
+**Integration_bot_Telegram_ESP32** is an autonomous **ESP32-based IoT device** that measures distance using an ultrasonic sensor and uploads data securely via HTTPS to a remote server.  
 It features a built-in **Wi-Fi setup web interface** that allows changing Wi-Fi credentials without reflashing.
 
 ### ⚙️ Features
@@ -69,7 +69,7 @@ After saving, the device reboots and connects to your network.
 
 ## 🇺🇿 Loyihaning tavsifi
 
-**ESP32bot** — bu **ESP32** mikrokontrolleri asosidagi mustaqil IoT qurilma bo‘lib, ultratovush sensoridan foydalangan holda masofani o‘lchaydi va ma’lumotlarni HTTPS orqali serverga yuboradi.  
+**Integration_bot_Telegram_ESP32** — bu **ESP32** mikrokontrolleri asosidagi mustaqil IoT qurilma bo‘lib, ultratovush sensoridan foydalangan holda masofani o‘lchaydi va ma’lumotlarni HTTPS orqali serverga yuboradi.  
 Qurilmada **Wi-Fi sozlash uchun ichki veb interfeys** mavjud — shuning uchun Wi-Fi ma’lumotlarini qayta dasturlamasdan o‘zgartirish mumkin.
 
 ### ⚙️ Asosiy funksiyalar
