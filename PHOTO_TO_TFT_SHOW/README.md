@@ -1,75 +1,105 @@
-# PHOTO_TO_TFT_SHOW
+# 🖼️ PHOTO_TO_TFT_SHOW
 
-## English
+## 🇬🇧 English
 
-This project allows you to display a JPEG image on a TFT display connected to an ESP32‑based board (for example, the LilyGO T‑Connect Pro). It includes conversion of the image into a compatible format and example code built with PlatformIO.
+This project demonstrates how to display a static image on a **TFT display (ST7735)** using an **ESP32** board.  
+It converts an image into a 16-bit RGB565 array and stores it in **PROGMEM** to show on startup.
 
-### Features
-- Converts a .jpg file into a format suitable for TFT display on ESP32.
-- Example firmware project using PlatformIO.
-- Works with common display libraries (e.g., TFT_eSPI).
-- Easy to adapt for your own image and board configuration.
+### 🔧 Features
+- Displays an embedded image (`qr_image_data`) stored in flash memory.  
+- Uses **Adafruit_GFX** and **Adafruit_ST7735** libraries.  
+- Configured for SPI pins on **ESP32**.  
+- Can be used as a **startup splash screen** for any ESP32 project.  
 
-### Requirements
-- ESP32‑based development board (e.g., LilyGO T‑Connect Pro)
-- TFT display module supported by your board and library
-- PlatformIO environment configured for your board
-- A JPEG image you want to display
+### ⚙️ Hardware connections
+| Signal | ESP32 Pin | Description |
+|--------|------------|-------------|
+| MOSI   | 26 | Data (SDA/MOSI) |
+| SCLK   | 27 | Clock (SCK) |
+| CS     | 13 | Chip Select |
+| DC     | 12 | Data/Command |
+| RST    | 14 | Reset |
 
-### Usage
-1. Replace the `image.jpg` (or your own image) in the folder.
-2. Run the conversion tool (if provided) or convert the image manually into the required format (e.g., C array, RAW bitmap).
-3. Update the example code with your image data and screen pin/config settings.
-4. Build and upload the firmware via PlatformIO to your board.
-5. On startup, the image will be displayed on the screen.
+### 📦 Required Libraries
+- `Adafruit_GFX`
+- `Adafruit_ST7735`
+- `SPI`
 
----
+Install them via PlatformIO (`platformio.ini`) or Arduino Library Manager.
 
-## Русский
-
-Этот проект позволяет отобразить JPEG‑изображение на TFT‑дисплее, подключённом к плате на базе ESP32 (например, LilyGO T‑Connect Pro). Включает конвертацию изображения в совместимый формат и пример прошивки на PlatformIO.
-
-### Возможности
-- Конвертация файла .jpg в формат, подходящий для вывода на TFT‑дисплей на ESP32.
-- Пример проекта прошивки с использованием PlatformIO.
-- Совместимость с распространёнными библиотеками дисплеев (например, TFT_eSPI).
-- Легко адаптируется под своё изображение и конфигурацию платы.
-
-### Требования
-- Плата на базе ESP32 (например, LilyGO T‑Connect Pro)
-- TFT‑дисплей, поддерживаемый вашей платой и библиотекой
-- Среда PlatformIO, настроенная под вашу плату
-- JPEG‑изображение, которое вы хотите отобразить
-
-### Использование
-1. Замените файл `image.jpg` (или вставьте своё изображение) в папке.
-2. Запустите инструмент конвертации (если он есть) или вручную конвертируйте изображение в нужный формат (например, C‑массив, RAW‑bitmap).
-3. Обновите пример кода, указав данные изображения и настройки экрана (пины, библиотеку).
-4. Сборка и загрузка прошивки через PlatformIO на вашу плату.
-5. При включении устройства изображение будет отображено на экране.
+### ▶️ Usage
+1. Convert your image to RGB565 array (using LCD-Image-Converter or online tools).  
+2. Replace `qr_image_data[]` in the `.ino` file with your image array.  
+3. Adjust width and height constants (`QR_WIDTH`, `QR_HEIGHT`).  
+4. Build and upload with PlatformIO.  
+5. On boot, your image will appear on the TFT screen.
 
 ---
 
-## Uzbek (Ўзбекча)
+## 🇷🇺 Русский
 
-Ushbu loyiha ESP32 asosidagi plata (masalan, LilyGO T‑Connect Pro) bilan ulanilgan TFT displeyda JPEG tasvirni ko‘rsatishga imkon beradi. Unda rasmni mos formatga o‘tkazish va PlatformIO bilan tuzilgan namuna dastur mavjud.
+Этот проект демонстрирует, как вывести статическое изображение на **TFT-дисплей (ST7735)** с помощью платы **ESP32**.  
+Изображение преобразуется в массив формата RGB565 и хранится в **PROGMEM**, чтобы отображаться при старте устройства.
 
-### Xususiyatlari
-- .jpg faylini ESP32 uchun TFT displeyga mos formatga o‘tkazish.
-- PlatformIO bilan namuna firmware loyihasi.
-- Ko‘p ishlatiladigan displey kutubxonalari bilan mos (masalan, TFT_eSPI).
-- O‘z tasviringiz va plata sozlamalaringizga osongina moslashadi.
+### 🔧 Возможности
+- Отображает встроенное изображение (`qr_image_data`), сохранённое во флеш-памяти.  
+- Использует библиотеки **Adafruit_GFX** и **Adafruit_ST7735**.  
+- Настроен под SPI-пины **ESP32**.  
+- Подходит как стартовая заставка для ваших проектов.
 
-### Talablar
-- ESP32 asosidagi rivojlantirish plata (masalan, LilyGO T‑Connect Pro)
-- Sizning plata va kutubxonangiz tomonidan qo‘llab‑quvvatlanadigan TFT displey
-- Sizning plata uchun sozlangan PlatformIO muhiti
-- Ko‘rsatmoqchi bo‘lgan JPEG tasvir
+### ⚙️ Подключение дисплея
+| Сигнал | Пин ESP32 | Назначение |
+|--------|------------|-------------|
+| MOSI   | 26 | Передача данных (SDA/MOSI) |
+| SCLK   | 27 | Тактирование (SCK) |
+| CS     | 13 | Выбор чипа |
+| DC     | 12 | Команда/данные |
+| RST    | 14 | Сброс |
 
-### Foydalanish
-1. Loyihada `image.jpg` (yoki sizning tasvir) faylini almashtiring.
-2. Konvertatsiya asbobini ishga tushiring (agar mavjud bo‘lsa) yoki tasvirni zarur formatga (masalan C massiv, RAW bitmap) qo‘l bilan o‘tkazing.
-3. Namuna kodini o‘zgartiring — tasvir ma’lumotlari va ekran sozlamalarini belgilang (pinlar, kutubxona).
-4. PlatformIO orqali firmware’ni qurib, plataningizga joylang.
-5. Qurilma yoqilganda, tasvir ekranda ko‘rinadi.
+### 📦 Необходимые библиотеки
+- `Adafruit_GFX`
+- `Adafruit_ST7735`
+- `SPI`
 
+Можно установить через **PlatformIO** или **Arduino IDE**.
+
+### ▶️ Как использовать
+1. Конвертируйте изображение в формат RGB565 (например, через **LCD Image Converter**).  
+2. Замените массив `qr_image_data[]` в коде на свой.  
+3. Укажите размеры изображения (`QR_WIDTH`, `QR_HEIGHT`).  
+4. Скомпилируйте и загрузите прошивку.  
+5. При включении устройство отобразит ваше изображение на экране.
+
+---
+
+## 🇺🇿 Oʻzbekcha
+
+Ushbu loyiha **ESP32** platasi yordamida **TFT displey (ST7735)** da rasmni ko‘rsatishni namoyish etadi.  
+Rasm RGB565 formatiga o‘tkazilib, **PROGMEM** ichida saqlanadi va qurilma ishga tushganda ekranga chiqariladi.
+
+### 🔧 Xususiyatlar
+- Flash xotirada saqlangan (`qr_image_data`) rasmni ko‘rsatadi.  
+- **Adafruit_GFX** va **Adafruit_ST7735** kutubxonalaridan foydalanadi.  
+- SPI pinlari **ESP32** uchun moslashtirilgan.  
+- Har qanday loyiha uchun start logosi sifatida ishlatiladi.
+
+### ⚙️ Ulanish sxemasi
+| Signal | ESP32 pin | Tavsif |
+|--------|------------|---------|
+| MOSI | 26 | Ma’lumot uzatish (SDA/MOSI) |
+| SCLK | 27 | Soat signali (SCK) |
+| CS | 13 | Chip tanlash |
+| DC | 12 | Ma’lumot/Boshqaruv |
+| RST | 14 | Qayta ishga tushirish |
+
+### 📦 Kerakli kutubxonalar
+- `Adafruit_GFX`
+- `Adafruit_ST7735`
+- `SPI`
+
+### ▶️ Foydalanish tartibi
+1. Rasmni RGB565 formatiga o‘tkazing (masalan, **LCD Image Converter** orqali).  
+2. `qr_image_data[]` massivini o‘zingizning rasm ma’lumotlariga almashtiring.  
+3. `QR_WIDTH` va `QR_HEIGHT` qiymatlarini moslang.  
+4. PlatformIO orqali dasturiy ta’minotni qurib yuklang.  
+5. Qurilma yoqilganda, rasm ekranda ko‘rinadi.
