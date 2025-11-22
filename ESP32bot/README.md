@@ -89,7 +89,7 @@ const int MAX_DISTANCE_CM = 100; // Maximum range
 
 #### 3. Server Configuration
 ```cpp
-const char* server_ip = "5.8.51.154";
+const char* server_ip = "Your server ip";
 const int server_port = 443;
 const char* api_password = "your_api_password";
 ```
