@@ -239,6 +239,3 @@ Bio_Master/
 This project is open source. Feel free to use and modify for your needs.
 
 🌱 Grow Smart, Harvest More with Bio Master! 🌱
-
-```
-```
