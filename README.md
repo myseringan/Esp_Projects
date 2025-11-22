@@ -26,6 +26,9 @@ This repository contains my ESP32 and ESP8266 projects. Each folder includes a c
 
 Each project folder contains its own README with detailed information.
 
+**👨‍💻 Author:** Temur Eshmurodov 
+**📄 License:** MIT License - Feel free to use and modify
+
 ---
 
 ## O'zbek
@@ -43,6 +46,9 @@ Ushbu repositoryda mening ESP32 va ESP8266 loyihalarim joylashgan. Har bir papka
 
 Har bir loyiha papkasida batafsil ma'lumot bilan README fayli mavjud.
 
+**👨‍💻 Muallif:** Temur Eshmurodov  
+**📄 Litsenziya:** MIT Litsenziyasi - Foydalanish va o'zgartirish mumkin
+
 ---
 
 ## Русский
@@ -59,6 +65,9 @@ Har bir loyiha papkasida batafsil ma'lumot bilan README fayli mavjud.
 - 🌡️ TFT Дисплеи - Различные проекты с дисплеями
 
 В каждой папке проекта есть README файл с подробной информацией.
+
+**👨‍💻 Автор:** Temur Eshmurodov  
+**📄 Лицензия:** MIT License - Можно свободно использовать и изменять
 
 ---
 
