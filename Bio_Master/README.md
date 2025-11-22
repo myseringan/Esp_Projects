@@ -78,6 +78,7 @@ Bio Master is an advanced smart agriculture system that automates plant care usi
 // LDR: A1
 // Soil Sensor: A0
 // ESP8266: RX=3, TX=4
+```
 2. Software Requirements
 ini
 ; Required Libraries:
