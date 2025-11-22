@@ -5,7 +5,7 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 
-const char* server_ip = "Your api server";
+const char* server_ip = "Your ip server";
 const int server_port = 443;
 const char* api_password = "";
 const int trigPin = 5;
@@ -213,4 +213,5 @@ void loop() {
     }
   }
 }
+
 
