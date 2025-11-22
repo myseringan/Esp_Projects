@@ -4,7 +4,7 @@
 ![ESP8266](https://img.shields.io/badge/ESP8266-Projects-orange)
 ![IoT](https://img.shields.io/badge/Platform-IoT-blue)
 
-## 🌍 Languages / Тиллар / Языки
+## 🌍 Languages / Tillar / Языки
 - [English](#english)
 - [O'zbek](#ozbek)
 - [Русский](#русский)
