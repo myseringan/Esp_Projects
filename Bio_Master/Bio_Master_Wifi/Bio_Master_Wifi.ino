@@ -1,6 +1,6 @@
 // ======================= Bio Master (ESP8266 + Blynk + Captive Portal) =======================
-#define BLYNK_TEMPLATE_ID   "TMPL6-Qhz9qFz"
-#define BLYNK_TEMPLATE_NAME "Bio Master"
+#define BLYNK_TEMPLATE_ID   
+#define BLYNK_TEMPLATE_NAME 
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
@@ -14,11 +14,11 @@
 
 // ----------------- Константы/AP -----------------
 const byte DNS_PORT = 53;
-const char *ap_ssid = "Bio Master";
-const char *ap_pass = "samurai2023";
+const char *ap_ssid = "Your Ssid";
+const char *ap_pass = "Your Pass";
 
 // дефолтный токен (если ещё не сохранён)
-char auth[] = "b-4atMkevFd_1iP5NTRkZr1t_zIO4iS0";
+char auth[] = "Your blynk auth";
 
 // ----------------- Глобальные -----------------
 DNSServer dnsServer;
@@ -438,4 +438,5 @@ void loop() {
   server.handleClient();           // затем HTTP
   Blynk.run();
   pollUNO();
+
 }
