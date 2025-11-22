@@ -258,7 +258,7 @@ ESP32 asosidagi ilg'or harorat kuzatish tizimi, ST7735 TFT displey, silliq anima
 
 ## 👨‍💻 Author
 
-**ESP32 TFT Display Projects**
+**Temur Eshmurodov**
 
 ## 📄 License
 
