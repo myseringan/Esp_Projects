@@ -2,12 +2,12 @@
 #include <PubSubClient.h>
 
 // ==== Wi-Fi ====
-const char* ssid = "Siren";
-const char* password = "00152010";
+const char* ssid = "Your ssid";
+const char* password = "Your pass";
 
 // ==== MQTT ====
 const char* mqtt_server = "broker.hivemq.com";
-const char* mqtt_topic  = "payments/68ffc803d2d01cc2d62db3a4"; // тот же merchant_id, что и в сервере
+const char* mqtt_topic  = "payments/your payment id"; // тот же merchant_id, что и в сервере
 
 WiFiClient espClient;
 PubSubClient client(espClient);
