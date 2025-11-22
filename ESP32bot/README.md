@@ -287,7 +287,7 @@ const int MAX_DISTANCE_CM = 100; // Maksimal masofa
 
 ## 👨‍💻 Author
 
-**ESP32 IoT Projects**
+**Temur Eshmurodov**
 
 ## 📄 License
 
