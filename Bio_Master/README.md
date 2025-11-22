@@ -232,15 +232,13 @@ Bio_Master/
 
 ### 👨‍💻 Author
 
-**Samurai Product** - Smart Agriculture Solutions
+**Temur Eshmurodov**
 
 ### 📄 License
 
 This project is open source. Feel free to use and modify for your needs.
 
-\<div align="center"\>
-\<h3\>🌱 Grow Smart, Harvest More with Bio Master\! 🌱\</h3\>
-\</div\>
+🌱 Grow Smart, Harvest More with Bio Master! 🌱
 
 ```
 ```
