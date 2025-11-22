@@ -1,6 +1,3 @@
-Понял, извиняюсь. Вот **весь** код файла целиком в одном блоке. Копируй от первой до последней строки.
-
-````markdown
 # Bio Master - Smart Agriculture System 🌱
 
 ![Bio Master](https://img.shields.io/badge/Project-Bio%20Master-green)
