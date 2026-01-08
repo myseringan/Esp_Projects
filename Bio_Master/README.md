@@ -355,7 +355,7 @@ MIT License - Feel free to use and modify
 
 ## 👨‍💻 Author
 
-**Temur Eshmurodov** - Samurai Product
+**Temur Eshmurodov**
 
 ---
 
