@@ -2,8 +2,8 @@
 $DB_HOST = 'localhost';
 $DB_NAME = 'wegabox';
 $DB_USER = 'wegabox';
-$DB_PASS = 'Tem2006!@';
-$API_KEY = 'dtergdfbvvwqref';
+$DB_PASS = '';
+$API_KEY = '';
 
 try {
     $pdo = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME;charset=utf8mb4", $DB_USER, $DB_PASS);
