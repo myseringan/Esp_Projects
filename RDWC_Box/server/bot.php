@@ -1,8 +1,8 @@
 <?php
-$BOT_TOKEN = "8590778831:AAHgXc6ADGM2cTQ4k5JQ402vIIdExdoCsRw";
+$BOT_TOKEN = "";
 $CHAT_IDS = ["7918577049", "1273160896"];
 
-$pdo = new PDO("mysql:host=localhost;dbname=wegabox;charset=utf8mb4", "wegabox", "Tem2006!@");
+$pdo = new PDO("mysql:host=localhost;dbname=wegabox;charset=utf8mb4", "wegabox", "");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 function getSelectedDevice($pdo, $chatId) {
