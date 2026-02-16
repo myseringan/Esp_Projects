@@ -27,7 +27,7 @@
 | 5 | [esp32s3-lvgl-dht-panel](./esp32s3-lvgl-dht-panel) | 🎨 LVGL иқлим панели | ESP32-S3 |
 | 6 | [Payme_QR_ESP32](./Payme_QR_ESP32) | 💳 Тўлов хабарномалари | ESP32 |
 | 7 | [Wireless_Soil_Sensor_Gateway](./Wireless_Soil_Sensor_Gateway) | 🌍 Тупроқ сенсорлари | ESP32-S3 |
-| 8 | [Megaphone_Player](./Megaphone_Player) | 📢 Саноат аудио плеер | ESP32-P4 |
+| 8 | [Megaphone_Player](./audio_server) | 📢 Саноат аудио плеер | ESP32-P4 |
 
 ---
 
