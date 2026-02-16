@@ -26,7 +26,7 @@
 | 4 | [ESP32_TFT_display_temperature_output](./ESP32_TFT_display_temperature_output) | 🌡️ Ҳарорат дисплейи | ESP32 |
 | 5 | [esp32s3-lvgl-dht-panel](./esp32s3-lvgl-dht-panel) | 🎨 LVGL иқлим панели | ESP32-S3 |
 | 6 | [Payme_QR_ESP32](./Payme_QR_ESP32) | 💳 Тўлов хабарномалари | ESP32 |
-| 7 | [Wireless_Soil_Sensor_Gateway](./Interface ESP32-S3 DevkitC-1 with METER GS3 Sensor (SDI-12)) | 🌍 Тупроқ сенсорлари | ESP32-S3 |
+| 7 | [Wireless_Soil_Sensor_Gateway](./Interface%20ESP32-S3%20DevkitC-1%20with%20METER%20GS3%20Sensor%20(SDI-12)) | 🌍 Тупроқ сенсорлари | ESP32-S3 |
 | 8 | [audio_server](./audio_server) | 📢 Саноат аудио плеер | ESP32-P4 |
 
 ---
