@@ -27,6 +27,7 @@
 | 5 | [esp32s3-lvgl-dht-panel](./esp32s3-lvgl-dht-panel) | 🎨 LVGL иқлим панели | ESP32-S3 |
 | 6 | [Payme_QR_ESP32](./Payme_QR_ESP32) | 💳 Тўлов хабарномалари | ESP32 |
 | 7 | [Wireless_Soil_Sensor_Gateway](./Wireless_Soil_Sensor_Gateway) | 🌍 Тупроқ сенсорлари | ESP32-S3 |
+| 8 | [Megaphone_Player](./Megaphone_Player) | 📢 Саноат аудио плеер | ESP32-P4 |
 
 ---
 
@@ -146,6 +147,45 @@ METER GS3 SDI-12 сенсорлари билан професионал тупр
 
 ---
 
+### 📢 Megaphone_Player
+**Саноат аудио огоҳлантириш тизими**
+
+HTTP API орқали аудио қабул қилувчи ва ижро этувчи тармоқ аудио плеер.
+
+| Компонент | Функция |
+|-----------|---------|
+| ESP32-P4 | Асосий контроллер |
+| ES8311 | Аудио кодек |
+| Ethernet RJ-45 | Тармоқ уланиши |
+| LittleFS | Флеш хотира (13 MB) |
+
+**Хусусиятлар:** Доимий аудио сақлаш, Hash кеширлаш, REST API
+
+**API Endpoints:**
+
+| Endpoint | Метод | Тавсиф |
+|----------|-------|--------|
+| `/health` | GET | Қурилма ҳолати |
+| `/update-audio` | POST | Аудио юклаш (binary) |
+| `/play-message` | POST | Сақланган аудиони ижро этиш |
+| `/check-audio` | POST | Мавжудликни текшириш |
+
+```bash
+# Аудио юклаш
+curl -X POST http://<IP>:1820/update-audio \
+  -H "Content-Type: application/octet-stream" \
+  -H "X-Message-Text: ogohlantirish" \
+  -H "X-Audio-Hash: abc123" \
+  --data-binary @audio.raw
+
+# Ижро этиш
+curl -X POST http://<IP>:1820/play-message \
+  -H "Content-Type: application/json" \
+  -d '{"message_text": "ogohlantirish", "audio_hash": "abc123"}'
+```
+
+---
+
 ## 🛠️ Ўрнатиш
 
 ### Arduino IDE
@@ -156,6 +196,16 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
 https://arduino.esp8266.com/stable/package_esp8266com_index.json
 ```
 3. Керакли кутубхоналарни ўрнатинг
+
+### ESP-IDF (Megaphone_Player учун)
+1. [ESP-IDF v5.3+](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/) ўрнатинг
+2. Проект папкасини очинг
+3. Қуйидаги командаларни ишлатинг:
+```bash
+idf.py set-target esp32p4
+idf.py build
+idf.py -p COM3 flash monitor
+```
 
 ### PlatformIO
 1. [VS Code](https://code.visualstudio.com/) + [PlatformIO](https://platformio.org/) ўрнатинг
@@ -175,6 +225,8 @@ https://arduino.esp8266.com/stable/package_esp8266com_index.json
 | PubSubClient | MQTT |
 | SDI12 | SDI-12 протокол |
 | ArduinoJson | JSON |
+| LittleFS | Флеш файл тизими |
+| ES8311 | Аудио кодек драйвери |
 
 ---
 
@@ -191,6 +243,7 @@ https://arduino.esp8266.com/stable/package_esp8266com_index.json
 | 5 | [esp32s3-lvgl-dht-panel](./esp32s3-lvgl-dht-panel) | 🎨 LVGL Climate Panel | ESP32-S3 |
 | 6 | [Payme_QR_ESP32](./Payme_QR_ESP32) | 💳 Payment Notifications | ESP32 |
 | 7 | [Wireless_Soil_Sensor_Gateway](./Wireless_Soil_Sensor_Gateway) | 🌍 Soil Sensors Gateway | ESP32-S3 |
+| 8 | [Megaphone_Player](./Megaphone_Player) | 📢 Industrial Audio Player | ESP32-P4 |
 
 ---
 
@@ -310,6 +363,45 @@ Professional soil analysis with METER GS3 SDI-12 sensors.
 
 ---
 
+### 📢 Megaphone_Player
+**Industrial Audio Alert System**
+
+Network audio player that receives and plays audio via HTTP API.
+
+| Component | Function |
+|-----------|----------|
+| ESP32-P4 | Main controller |
+| ES8311 | Audio codec |
+| Ethernet RJ-45 | Network connection |
+| LittleFS | Flash storage (13 MB) |
+
+**Features:** Persistent audio storage, Hash-based caching, REST API
+
+**API Endpoints:**
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/health` | GET | Device status |
+| `/update-audio` | POST | Upload audio (binary) |
+| `/play-message` | POST | Play stored audio |
+| `/check-audio` | POST | Check if exists |
+
+```bash
+# Upload audio
+curl -X POST http://<IP>:1820/update-audio \
+  -H "Content-Type: application/octet-stream" \
+  -H "X-Message-Text: alert_message" \
+  -H "X-Audio-Hash: abc123" \
+  --data-binary @audio.raw
+
+# Play audio
+curl -X POST http://<IP>:1820/play-message \
+  -H "Content-Type: application/json" \
+  -d '{"message_text": "alert_message", "audio_hash": "abc123"}'
+```
+
+---
+
 ## 🛠️ Installation
 
 ### Arduino IDE
@@ -320,6 +412,16 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
 https://arduino.esp8266.com/stable/package_esp8266com_index.json
 ```
 3. Install required libraries
+
+### ESP-IDF (for Megaphone_Player)
+1. Install [ESP-IDF v5.3+](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/)
+2. Open project folder
+3. Run the following commands:
+```bash
+idf.py set-target esp32p4
+idf.py build
+idf.py -p COM3 flash monitor
+```
 
 ### PlatformIO
 1. Install [VS Code](https://code.visualstudio.com/) + [PlatformIO](https://platformio.org/)
@@ -339,6 +441,8 @@ https://arduino.esp8266.com/stable/package_esp8266com_index.json
 | PubSubClient | MQTT |
 | SDI12 | SDI-12 protocol |
 | ArduinoJson | JSON |
+| LittleFS | Flash file system |
+| ES8311 | Audio codec driver |
 
 ---
 
@@ -355,6 +459,7 @@ https://arduino.esp8266.com/stable/package_esp8266com_index.json
 | 5 | [esp32s3-lvgl-dht-panel](./esp32s3-lvgl-dht-panel) | 🎨 LVGL климат-панель | ESP32-S3 |
 | 6 | [Payme_QR_ESP32](./Payme_QR_ESP32) | 💳 Уведомления об оплате | ESP32 |
 | 7 | [Wireless_Soil_Sensor_Gateway](./Wireless_Soil_Sensor_Gateway) | 🌍 Датчики почвы | ESP32-S3 |
+| 8 | [Megaphone_Player](./Megaphone_Player) | 📢 Промышленный аудио плеер | ESP32-P4 |
 
 ---
 
@@ -474,6 +579,45 @@ AP: "ESP32-Config" → 192.168.4.1
 
 ---
 
+### 📢 Megaphone_Player
+**Промышленная система звукового оповещения**
+
+Сетевой аудио плеер, принимающий и воспроизводящий аудио через HTTP API.
+
+| Компонент | Функция |
+|-----------|---------|
+| ESP32-P4 | Основной контроллер |
+| ES8311 | Аудио кодек |
+| Ethernet RJ-45 | Сетевое подключение |
+| LittleFS | Flash хранилище (13 MB) |
+
+**Особенности:** Постоянное хранение аудио, кеширование по hash, REST API
+
+**API Endpoints:**
+
+| Endpoint | Метод | Описание |
+|----------|-------|----------|
+| `/health` | GET | Статус устройства |
+| `/update-audio` | POST | Загрузка аудио (binary) |
+| `/play-message` | POST | Воспроизведение |
+| `/check-audio` | POST | Проверка наличия |
+
+```bash
+# Загрузка аудио
+curl -X POST http://<IP>:1820/update-audio \
+  -H "Content-Type: application/octet-stream" \
+  -H "X-Message-Text: оповещение" \
+  -H "X-Audio-Hash: abc123" \
+  --data-binary @audio.raw
+
+# Воспроизведение
+curl -X POST http://<IP>:1820/play-message \
+  -H "Content-Type: application/json" \
+  -d '{"message_text": "оповещение", "audio_hash": "abc123"}'
+```
+
+---
+
 ## 🛠️ Установка
 
 ### Arduino IDE
@@ -484,6 +628,16 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
 https://arduino.esp8266.com/stable/package_esp8266com_index.json
 ```
 3. Установите необходимые библиотеки
+
+### ESP-IDF (для Megaphone_Player)
+1. Установите [ESP-IDF v5.3+](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/)
+2. Откройте папку проекта
+3. Выполните команды:
+```bash
+idf.py set-target esp32p4
+idf.py build
+idf.py -p COM3 flash monitor
+```
 
 ### PlatformIO
 1. Установите [VS Code](https://code.visualstudio.com/) + [PlatformIO](https://platformio.org/)
@@ -503,6 +657,8 @@ https://arduino.esp8266.com/stable/package_esp8266com_index.json
 | PubSubClient | MQTT |
 | SDI12 | Протокол SDI-12 |
 | ArduinoJson | JSON |
+| LittleFS | Flash файловая система |
+| ES8311 | Драйвер аудио кодека |
 
 ---
 
@@ -517,6 +673,7 @@ Esp_Projects/
 ├── esp32s3-lvgl-dht-panel/     # LVGL климат-панель
 ├── Payme_QR_ESP32/             # Уведомления об оплате
 ├── Wireless_Soil_Sensor_.../   # Датчики почвы
+├── Megaphone_Player/           # Промышленный аудио плеер
 └── README.md
 ```
 
